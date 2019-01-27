@@ -4266,7 +4266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Right nut
+  m_Text: Right but
 --- !u!222 &845385219
 CanvasRenderer:
   m_ObjectHideFlags: 0
