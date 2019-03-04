@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour {
 
     public videomanager _videomanager;
-    private float max_pitches = 10f;
-    private float pitches_left = 10f;
+    private float max_pitches = 60f;
+    private float pitches_left = 60f;
     public GameObject pitchcountbar;
 
     [SerializeField]
@@ -13,7 +13,14 @@ public class Counter : MonoBehaviour {
 
     //walk
     public Text walkcountertxt;
+
     int walkcounter = 0;
+
+    public Text battewrwalkcountertxt;
+    int batterwalkcounter = 0;
+
+    public Text battetxtfoultip;
+    int batterfoultipcounter = 0;
 
     public Text balllefttxt;
     int leftcounter = 0;
@@ -29,6 +36,9 @@ public class Counter : MonoBehaviour {
 
     public Text striketxt;
     int strikecounter = 0;
+
+    public Text tempstriketxt;
+    int tempstrikecounter = 0;
 
     public Text totalstriketxt;
     int totalstrikecounter = 0;
@@ -50,6 +60,20 @@ public class Counter : MonoBehaviour {
     int hitbattercounter = 0;
 
     public Image imgprogress;
+    
+
+  
+
+    public static int setlight;
+
+    void Start()
+    {
+        //Fetch the Image from the GameObject
+        setlight = 4;
+        Debug.Log(setlight);
+    }
+
+    
 
     public void funBallLeft()
     {
@@ -100,11 +124,13 @@ public class Counter : MonoBehaviour {
     public void funStrike()
     {
         strikecounter++;
+        tempstrikecounter++;
         totalpitchcounter++;
         striketxt.text = strikecounter.ToString();
-        totalstrikecounter++;
-        totalstriketxt.text = totalstrikecounter.ToString();
         totalpitchtxt.text = totalpitchcounter.ToString();
+        totalstrikecounter++;
+        setlight++;
+        Debug.Log(setlight);
         fundecreasepitch();
     }
 
@@ -130,6 +156,25 @@ public class Counter : MonoBehaviour {
         strikeouttxt_see_me.text = strikecounter.ToString();
     }
 
+     public void funbattetxtfoultip()
+    {
+        batterfoultipcounter++;
+        battetxtfoultip.text = batterfoultipcounter.ToString();
+        totalpitchcounter++;
+        totalpitchtxt.text = totalpitchcounter.ToString();
+        fundecreasepitch();
+    }
+
+    public void funhitbatter()
+    {
+        hitbattercounter++;
+        hitbattertxt.text = hitbattercounter.ToString();
+        totalpitchcounter++;
+        totalpitchtxt.text = totalpitchcounter.ToString();
+        setlight = 0;
+        fundecreasepitch();
+    }
+
     public void funhit()
     {
         strikecounter++;
@@ -140,7 +185,7 @@ public class Counter : MonoBehaviour {
     {
         double currentpcent = (double)strikecounter / totalpitchcounter;
         pcentstriketxt.text = currentpcent.ToString("F2") + "%";
-        float calc_pitch = pitches_left - (totalballscounter + totalstrikecounter);
+        float calc_pitch = pitches_left - (totalballscounter + totalstrikecounter + batterfoultipcounter + hitbattercounter);
         float reducebar = calc_pitch / max_pitches;
         overlimittxt.text = calc_pitch.ToString() + " PITCHES LEFT";
         setpitchbar(reducebar);
@@ -155,17 +200,17 @@ public class Counter : MonoBehaviour {
             if (mypitchcount <= 0.99f)
             {
                 pitchcountbar.transform.localScale = new Vector3(mypitchcount, 1, 1);
-                imgprogress.GetComponent<Image>().color = Color.green;
+                //imgprogress.GetComponent<Image>().color = Color.green;
 
                 if (mypitchcount <= 0.40f)
                 {
                     pitchcountbar.transform.localScale = new Vector3(mypitchcount, 1, 1);
-                    imgprogress.GetComponent<Image>().color = Color.yellow;
+                    //imgprogress.GetComponent<Image>().color = Color.yellow;
 
                     if (mypitchcount <= 0.20f)
                     {
                         pitchcountbar.transform.localScale = new Vector3(mypitchcount, 1, 1);
-                        imgprogress.GetComponent<Image>().color = Color.red;
+                        //imgprogress.GetComponent<Image>().color = Color.red;
 
 
                     }
