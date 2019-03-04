@@ -10869,7 +10869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.016886706}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -11.5}
+  m_AnchoredPosition: {x: 0, y: -11.500061}
   m_SizeDelta: {x: -1600, y: -777}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011543057
@@ -11463,9 +11463,11 @@ MonoBehaviour:
   ballrighttxt: {fileID: 1642651707}
   ballhightxt: {fileID: 841229397}
   balllowtxt: {fileID: 699223178}
-  striketxt: {fileID: 2050933471}
+  striketxt: {fileID: 3675966}
   tempstriketxt: {fileID: 0}
   totalstriketxt: {fileID: 3675966}
+  BallStrikeCounter: 0
+  BallStrikeCountertxt: {fileID: 2050933471}
   pcentstriketxt: {fileID: 964691177}
   totalballstxt: {fileID: 565669328}
   totalpitchtxt: {fileID: 805746669}

@@ -43,6 +43,9 @@ public class Counter : MonoBehaviour {
     public Text totalstriketxt;
     int totalstrikecounter = 0;
 
+    public int BallStrikeCounter;
+    public Text BallStrikeCountertxt;
+
     public Text pcentstriketxt;
 
     public Text totalballstxt;
@@ -124,6 +127,8 @@ public class Counter : MonoBehaviour {
     public void funStrike()
     {
         strikecounter++;
+        BallStrikeCounter++;
+        BallStrikeCountertxt.text = BallStrikeCounter.ToString();
         tempstrikecounter++;
         totalpitchcounter++;
         striketxt.text = strikecounter.ToString();
@@ -171,7 +176,7 @@ public class Counter : MonoBehaviour {
         hitbattertxt.text = hitbattercounter.ToString();
         totalpitchcounter++;
         totalpitchtxt.text = totalpitchcounter.ToString();
-        setlight = 0;
+        setlight = 4;
         fundecreasepitch();
     }
 
@@ -179,6 +184,7 @@ public class Counter : MonoBehaviour {
     {
         strikecounter++;
         striketxt.text = strikecounter.ToString();
+        
     }
 
     public void fundecreasepitch()
